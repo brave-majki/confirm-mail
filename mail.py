@@ -68,14 +68,13 @@ def main():
             with open("mail.txt", "a") as f:
                 f.write(f"{email}\n")
             print(email)
-            print("hello")
             while True:
                 with open('page.html', 'w', encoding='utf-8') as f:
                     f.write(page.content())
                 seen = set()
                 for line in Path('page.html').read_text(encoding='utf-8').splitlines():
                     if needle in line:
-                        print("found_part of the link %i", a)# cheap pre-filter
+                        print("found_part of the link")# cheap pre-filter
                         for url in link_re.findall(line):
                             seen.add(url)                            # discard duplicates
 #print(list(seen)) #print the array ['a','b','c']
@@ -92,7 +91,7 @@ def main():
                     break
                 if a>0:
                     break;
-                print("check file")
+                print("checking for the mail")
                 time.sleep(random.uniform(1, 2))
 
         browser.close()
