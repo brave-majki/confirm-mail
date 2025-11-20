@@ -2,7 +2,7 @@
 # python3 -m venv venv 
 # source venv/bin/activate
 # /home/mato/Desktop/bash/test/venv/bin/python /home/mato/Desktop/bash/test/h.py > /home/mato/Desktop/bash/test/tempmail.log 2>&1
-from playwright.sync_api import sync_playwright
+from patchright.sync_api import sync_playwright
 import time
 import easyocr  # pip install easyocr
 import cv2
@@ -48,9 +48,8 @@ def main():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
         ra=random_user_agent()
-        page = browser.new_page(
-            user_agent=ra#"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-        )
+        page = browser.new_page()
+                #       user_agent=ra#"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
         #Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/5364.36 (KHTML, like Gecko) Chrome/120.0.657.0 Safari/5364.36
 
         # print(random_user_agent())

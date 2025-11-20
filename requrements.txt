@@ -1,5 +1,4 @@
-playwright
-playwright-stealth
+patchright
 easyocr
 opencv-python
 numpy
