@@ -8,7 +8,7 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 
-playwright install
+patchright install
 ```
 
 3rd run the program
