@@ -16,4 +16,4 @@ patchright install
 python3 mail.py
 ```
 > [!IMPORTANT]
-> one thing to add you have to source the venv every use
+> you have to source the venv every use ```source venv/bin/activate```
