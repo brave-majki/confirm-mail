@@ -60,13 +60,19 @@ def main():
                             seen.add(url)                            # discard duplicates
 #print(list(seen)) #print the array ['a','b','c']
                 for url in seen:
-                    # new_page = browser.new_page(
-                    #         user_agent=ra
-                    # )
-                    # new_page.bring_to_front()
-                    # new_page.goto(url)
                     time.sleep(random.uniform(1, 2))
                     page.goto(url)
+                    # --- after the foreach loop for url in seen ---
+                    # look for confirmation code or button
+                    html = page.content()
+                    # 1) try to grab a 6-digit confirmation code
+                    # 2) if no code, click any confirm/verify button
+
+                    button = page.locator('a:has-text("Confirm"), a:has-text("Confirm mail"), a:has-text("Verify")').first
+                    if button.count():
+                        button.click()
+                    else:
+                        print("nothing found")
                     time.sleep(100)
                     a=1
                     break
