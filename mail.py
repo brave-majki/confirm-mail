@@ -29,30 +29,12 @@ def extract_email_from_screenshot(screenshot_path):
 
             
     return results
-    return "there is no mail"
-
-
-def random_user_agent():
-    """Return a random Windows / Chrome UA string (major version 110–130)."""
-    major = random.randint(110, 130)
-    minor = random.randint(0, 555)
-    webkit = random.randint(530, 540)
-    return (
-        f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        f"AppleWebKit/{webkit}.36 (KHTML, like Gecko) "
-        f"Chrome/{major}.0.{minor}.0 Safari/{webkit}.36"
-    )
 
 def main():
     a=0
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
-        ra=random_user_agent()
         page = browser.new_page()
-                #       user_agent=ra#"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
-        #Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/5364.36 (KHTML, like Gecko) Chrome/120.0.657.0 Safari/5364.36
-
-        # print(random_user_agent())
         
         page.goto("https://temp-mail.org/en/")
         time.sleep(7)  # Wait for email to appear
