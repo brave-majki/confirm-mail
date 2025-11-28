@@ -1,7 +1,7 @@
 # setup
 1st create an environment 
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 ```
 2nd install all dependencies
