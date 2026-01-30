@@ -62,23 +62,24 @@ def main():
                 for url in seen:
                     time.sleep(random.uniform(1, 2))
                     page.goto(url)
-                    # --- after the foreach loop for url in seen ---
-                    # look for confirmation code or button
-                    html = page.content()
+                    print(url)
+                    break
+                    # // html = page.content()
                     # 1) try to grab a 6-digit confirmation code
                     # 2) if no code, click any confirm/verify button
+                page.wait_for_load_state('networkidle')
+                verify_anchors = page.locator(
+                    'a:has-text("Verify"), a:has-text("Confirm"), a:has-text("Confirm mail"), a:has-text("Verify my account")'
+                )
 
-                    button = page.locator('a:has-text("Confirm"), a:has-text("Confirm mail"), a:has-text("Verify")').first
-                    if button.count():
-                        button.click()
-                    else:
-                        print("nothing found")
-                    time.sleep(100)
-                    a=1
+# 2) click them all
+                for i in range(verify_anchors.count()):
+                    verify_anchors.nth(i).click(timeout=5_000)   # 5 s timeout per click
+                    page.wait_for_load_state('networkidle')      # wait until the navigation is finished
                     break
                 if a>0:
-                    break;
-                print("checking for the mail")
+                    break
+                print(".", end="")
                 time.sleep(random.uniform(1, 2))
 
         browser.close()
