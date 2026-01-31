@@ -76,10 +76,9 @@ def main():
                 for i in range(verify_anchors.count()):
                     verify_anchors.nth(i).click(timeout=5_000)   # 5 s timeout per click
                     page.wait_for_load_state('networkidle')      # wait until the navigation is finished
-                    break
+                    a=1
                 if a>0:
                     break
-                print(".", end="")
                 time.sleep(random.uniform(1, 2))
 
         browser.close()
